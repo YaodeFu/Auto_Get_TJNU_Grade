@@ -1,5 +1,7 @@
 <img src="https://github.githubassets.com/assets/mona-loading-default-c3c7aad1282f.gif" width="64">
 
+> 所有需要的文件：[访问密码：6ppw](https://wwboo.lanzouv.com/iB7dx3g8kpbe)
+
 # 应用和命令解释
 
 ## 安装应用：
