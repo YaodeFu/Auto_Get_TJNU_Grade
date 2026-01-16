@@ -11,7 +11,7 @@
 * **MT管理器**（可选） - 用于方便地管理手机文件和修改Python源代码
 
 ## Termux换源：
-sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/termux-packages-24 stable main@' $PREFIX/etc/apt/sources.list &&apt update && apt upgrade
+`sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/termux-packages-24 stable main@' $PREFIX/etc/apt/sources.list &&apt update && apt upgrade`
 
 ## 安装termux-api库：
 `pkg install termux-api`
