@@ -37,9 +37,10 @@
 2. 抓包获取 Header：
    * 打开 **HttpCanary**，点右下角的小飞机（开始抓包），授予建立VPN连接的权限。
    * 打开 **喜鹊儿**，找到原始成绩页，等成绩成功载出来后回到 **HttpCanary**。
-   * 点小飞机（停止抓包），主页会有一些喜鹊儿图标的抓包内容。
-   * 随便找一个查看：**请求 -> 预览**。
-   * 把 `appsjxh`、`encrptSecretKey`、...、`token` 依次写入 `AutoGetGrade.py` 的对应位置并保存。
+   * 点小飞机（停止抓包），主页会有一些喜鹊儿的抓包内容（POST http://api.xiqueer.com/manager//wap/wapController.jsp）。
+   * 挨个查找这些抓包内容：**响应 -> Text**，找到带有你的成绩的响应，页面上会有一些零零散散的数据，比如**姓名**、**课程名称**、**班级**等。
+   * 在找到你成绩的抓包内容里，点击**请求->预览**。
+   * 把 `appsjxh`、`encrptSecretKey`、...、`token` 的值依次写入 `AutoGetGrade.py` 的对应位置并保存。
 
 3. 打开 **Termux**，依次进行：
    * Termux换源
