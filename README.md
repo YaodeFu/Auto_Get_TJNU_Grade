@@ -150,4 +150,10 @@ payload = sjxz=sjxz3&ysyx=yscj&zx=1&fx=1&rxnj=2025&btnExport=%%B5%%BC%%B3%%F6&xn
 
 > 小提示：当检测到成绩更新时，会自动播放一段音频，音频可以自定义，在`config.ini`的`audio_path`条目修改，默认为`D:\sunrise.wav`，如果文件不存在或没有配置则不会播放。
 
+## 许可证
+
+MIT License © 2026 [YaodeFu]
+
+详见 [LICENSE](LICENSE) 文件。
+
 **EOF**
