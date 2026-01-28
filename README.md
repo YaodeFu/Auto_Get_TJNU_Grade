@@ -1,75 +1,153 @@
 <img src="https://github.githubassets.com/assets/mona-loading-default-c3c7aad1282f.gif" width="64">
 
-> 所有需要的文件：[访问密码：6ppw](https://wwboo.lanzouv.com/iB7dx3g8kpbe)
+# 下载
 
-# 应用和命令解释
-
-## 安装应用：
-* **Http Canary** - 用于抓包，获取请求头
-* **Termux:API** - 用于获取成功后的通知
-* **ZeroTermux** - 后台持续获取成绩
-* **MT管理器**（可选） - 用于方便地管理手机文件和修改Python源代码
-
-## Termux换源：
-`sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/termux-packages-24 stable main@' $PREFIX/etc/apt/sources.list &&apt update && apt upgrade`
-
-> 如果执行换源后下载依然很慢，就双击屏幕左边缘，切换源，北京源，即可
-
-## 安装termux-api库：
-`pkg install termux-api`
-
-## 安装Python：
-`pkg install python`
-
-## 安装requests库：
-`pip install requests`
-
-## pip换源：
-`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`
-
-`pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn`
+Windows端：从[GitHub Release](https://github.com/YaodeFu/Auto_Get_TJNU_Grade/releases)中下载`AutoGetTJNUGrade.py`
 
 ---
 
-# 正式配置
+# 安装Python
+Python官网：[www.python.org](https://www.python.org)
 
-1. 安装所有软件，把 `AutoGetGrade.py` 放到熟悉的文件夹，比如 `/storage/emulated/0/Documents`，把所有软件该给的权限都给了。
+下载对应电脑版本的安装包，安装时务必勾选`Add Python.exe to PATH`，如下图：
 
-2. 抓包获取 Header：
-   * 打开 **HttpCanary**，点右下角的小飞机（开始抓包），授予建立VPN连接的权限。
-   * 打开 **喜鹊儿**，找到原始成绩页，等成绩成功载出来后回到 **HttpCanary**。
-   * 点小飞机（停止抓包），主页会有一些喜鹊儿的抓包内容（带有 `POST http://api.xiqueer.com/manager//wap/wapController.jsp` 字样的）。
-   * 挨个查找这些抓包内容：**响应 -> Text**，找到带有你的成绩的响应，页面上会有一些零零散散的数据，比如**姓名**、**课程名称**、**班级**等。
-   * 在找到你成绩的抓包内容里，点击**请求->预览**。
-   * 把 `appsjxh`、`encrptSecretKey`、...、`token` 的值依次写入 `AutoGetGrade.py` 的对应位置并保存。
+![勾选Add Python.exe to PATH](./inst_python.png)
 
-3. 打开 **Termux**，依次进行：
-   * Termux换源
-     
-      > 如果执行换源后下载依然很慢，就双击屏幕左边缘，切换源，北京源，即可
-   
-   * 安装Python
-   * 安装termux-api库
-   * pip换源
-   * 安装requests库
+---
 
-   **完整代码（逐行复制粘贴，不要长按识图，不要手动打）：**
-   ```bash
-   sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.bfsu.edu.cn/termux/termux-packages-24 stable main@' $PREFIX/etc/apt/sources.list &&apt update && apt upgrade
-   pkg install python
-   pkg install termux-api
-   pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-   pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn
-   pip install requests
-   ```
-   > 中途有时候需要输入y并回车
+# 检验Python的安装
+在开始菜单中搜索`命令提示符`，并`以管理员身份运行`，在打开的窗口中输入`python`并回车，若显示类似的提示：
+```
+Usage:
+  pip <command> [options]
 
-4. 如果一切顺利，就可以直接用了。打开 **Termux**，`cd` 到存放 `AutoGetGrade.py` 的目录，例如：
-   `cd /storage/emulated/0/Documents`
-   
-   然后运行脚本：
-   `python AutoGetGrade.py`
-   
-   能看到已经出的学科成绩并且收到了测试通知，就代表正常运行了，把 **Termux** 挂后台就行了。
+Commands:
+  install                     Install packages.
+  lock                        Generate a lock file.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  inspect                     Inspect the python environment.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  cache                       Inspect and manage pip's wheel cache.
+  index                       Inspect information available from package indexes.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
 
-5. 如果手滑关了 **Termux**，只需要重新执行第 4 步即可。
+General Options:
+  -h, --help                  Show help.
+  --debug                     Let unhandled exceptions propagate outside the main subroutine, instead of logging them
+                              to stderr.
+  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.
+  --require-virtualenv        Allow pip to only run in a virtual environment; exit with an error otherwise.
+  --python <python>           Run pip with the specified Python interpreter.
+  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times (corresponding to
+                              WARNING, ERROR, and CRITICAL logging levels).
+  --log <path>                Path to a verbose appending log.
+  --no-input                  Disable prompting for input.
+  --keyring-provider <keyring_provider>
+                              Enable the credential lookup via the keyring library if user input is allowed. Specify
+                              which mechanism to use [auto, disabled, import, subprocess]. (default: auto)
+  --proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum attempts to establish a new HTTP connection. (default: 5)
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup,
+                              (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair as trusted, even though it does not have valid or any
+                              HTTPS.
+  --cert <path>               Path to PEM-encoded CA certificate bundle. If provided, overrides the default. See 'SSL
+                              Certificate Verification' in pip documentation for more information.
+  --client-cert <path>        Path to SSL client certificate, a single file containing the private key and the
+                              certificate in PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether a new version of pip is available for
+                              download. Implied with --no-index.
+  --no-color                  Suppress colored output.
+  --use-feature <feature>     Enable new functionality, that may be backward incompatible.
+  --use-deprecated <feature>  Enable deprecated functionality, that will be removed in the future.
+  --resume-retries <resume_retries>
+                              Maximum attempts to resume or restart an incomplete download. (default: 5)
+```
+
+即说明安装正确。
+
+---
+
+# 安装运行库
+
+## pip换源
+
+在国内，pip的官方源下载速度非常慢，建议换为第三方高速下载源，可自行搜索，这里推荐`清华源`。
+
+在刚刚的黑色窗口中输入以下内容并回车：
+
+```
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn
+```
+
+## 正式安装
+
+在刚刚的黑色窗口中输入以下内容并回车：
+
+```bash
+pip install requests bs4 prettytable playwright
+playwright install chromium
+```
+
+等待进度条跑完后，即安装完成。
+
+---
+
+# 程序配置
+
+直接双击打开`AutoGetTJNUGrade.py`文件，会提示：
+
+```
+[*] 首次运行：已生成 config.ini
+[!] 请先在配置文件中填写 [USER] 部分的学号和密码，然后重新运行。
+请按任意键继续. . .
+```
+
+此时，运行目录中会生成一个名为`config.ini`的文件，双击打开它：
+
+```ini
+# ============================================================
+# 使用说明：
+# 1. 只需要配置 [USER] 层级下的 username(学号) 和 password(密码)
+# 2. [PATH] 下的 audio_path 为成绩更新时的提醒铃声路径
+# 3. [AUTH] 和 [DATA] 层级下的内容由脚本自动维护，请勿随意修改
+# ============================================================
+
+[USER]
+username = 
+password = 
+
+[PATH]
+audio_path = D:\sunrise.wav
+
+[AUTH]
+cookie = 
+
+[DATA]
+payload = sjxz=sjxz3&ysyx=yscj&zx=1&fx=1&rxnj=2025&btnExport=%%B5%%BC%%B3%%F6&xn=2025&xn1=2026&xq=0&ysyxS=on&sjxzS=on&zxC=on&fxC=on&xsjd=1&menucode_current=S40303
+```
+
+在`username = `后填入你的学号，在`password = `后填入你的密码，其他**不要配置**，保存文件。
+
+再次运行，会进行首次登录，什么都无需操作，等待自动执行完成即可。
+
+> 小提示：当检测到成绩更新时，会自动播放一段音频，音频可以自定义，在`config.ini`的`audio_path`条目修改，默认为`D:\sunrise.wav`，如果文件不存在或没有配置则不会播放。
+
+**EOF**
